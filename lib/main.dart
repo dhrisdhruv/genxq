@@ -1,42 +1,22 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'package:genxq/pages/loginpage.dart';
 import 'package:genxq/pages/accountpage.dart';
 import 'package:genxq/pages/cartpage.dart';
 import 'package:genxq/pages/homepage.dart';
 import 'package:genxq/pages/shoppage.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-
-  runApp(MyApp());
+  runApp(ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends HookConsumerWidget {
   @override
-  State<StatefulWidget> createState() {
-    return MyAppState();
-  }
-
-}
-
-class MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-
-    void handleTimeout() {
-      FlutterNativeSplash.remove();
-    }
-
-    Timer scheduleTimeout([int seconds = 1]) {
-      return Timer(Duration(seconds: seconds), handleTimeout);
-    }
-
-    scheduleTimeout(1);
+  Widget build(BuildContext context, WidgetRef ref) {
 
     return MaterialApp(
     home: HomePage(),

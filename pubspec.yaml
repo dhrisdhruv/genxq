@@ -38,6 +38,10 @@ dependencies:
   flutter_native_splash: ^2.3.2
   dart_quote: ^0.0.2
   animated_icon_button: ^1.0.2
+  flutter_image_slideshow: ^0.1.6
+  flutter_hooks: ^0.20.1
+  hooks_riverpod: ^2.4.0
+  persistent_bottom_nav_bar: ^5.0.2
 
 dev_dependencies:
   flutter_test:
@@ -58,6 +62,8 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/slideshow/
+    - assets/images/featured_products/
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

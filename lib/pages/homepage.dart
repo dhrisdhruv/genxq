@@ -1,8 +1,12 @@
+
 import 'package:flutter/material.dart';
 import 'package:genxq/utilities/appbar.dart';
 import 'package:genxq/utilities/drawer.dart';
 import 'package:genxq/utilities/search.dart';
 import 'package:animated_icon_button/animated_icon_button.dart';
+import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import 'package:genxq/utilities/featured_products.dart';
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -27,7 +31,8 @@ class HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: MyAppBar(),
       endDrawer: MyDrawer(),
-      body: Column(
+      body: ListView(
+        shrinkWrap: true,
         children: [
           Center(
             child: MySearchBar(),
@@ -40,8 +45,8 @@ class HomePageState extends State<HomePage> {
             child: Padding(
               padding: EdgeInsets.only(left: 100, right: 100),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('50% Off',
                     style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
@@ -85,6 +90,25 @@ class HomePageState extends State<HomePage> {
               ),
             ),
           ),
+          SizedBox(height: 10,),
+          Center(
+            child: Container(
+              height: MediaQuery.of(context).size.height/4,
+              width: MediaQuery.of(context).size.width/1.5,
+              child: ImageSlideshow(
+                autoPlayInterval: 2000,
+                isLoop: true,
+                children: [
+                  Image.asset('assets/images/slideshow/m1.png', fit: BoxFit.scaleDown,),
+                  Image.asset('assets/images/slideshow/m2.png', fit: BoxFit.scaleDown,),
+                  Image.asset('assets/images/slideshow/shop.png', fit: BoxFit.scaleDown,),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(height: 10,),
+          FeaturedProducts(),
+          SizedBox(height: 10,),
         ],
       ),
     );
